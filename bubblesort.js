@@ -1,30 +1,61 @@
 
-function swap (e1, e2){
-    if(e1 > e2){
-        return e2
-    }else {
-        return e1
-    }
+
+
+function swap(idx, arr){ //swap(0, [3,2])
+    //take i and array
+    //
+    let temp = arr[idx] //3
+    arr[idx]= arr[idx+1] 
+    arr[idx+1]=temp
+    console.log(arr);
+    return arr; //[2,3]
 }
 
 function bubbleSort (array) {
-    let result = []
-    if(array.length === 0 || array.length === 1){
+    // let result = []
+    let swapOccur = false
+
+    //if array.length is 0 or 1, return array
+
+   if(array.length === 0 || array.length === 1){
         return array
-    }
+    } 
+    //otherwise, loop through array
+    let n = array.length
+    while(n){
 
-    for(let i = 0; i < array.length; i++){
-        let e = array[i]
-       for(let j= i+1; j < array.length-i-1; j++){
-           if(array[i] > array[j]){
-               result.push(array[j])
-           }
-           console.log('array[i]', array[i])
-           console.log('array[j]', array[j])
-            result.push(swap(e, array[j]))
-       }
+        for(let i = 0; i < array.length-1; i++){
+           
+            //compare i to i + 1 (3 > 2) = (i > i +1)
+            if(array[i] > array[i+1]){
+                //swap takes i, arr
+                swap(i, array)
+            console.log(array);
+                //switch swapOccur to true
+                swapOccur = true
+            }
+        
+        }
+        n--;
     }
-
-    return result
+    return array
 }
+
+// function bubbleSort (arr) {
+//     let temp = []
+//     if(arr.length === 0 || arr.length === 1){
+//         return arr
+//     }
+//     for( let i = 0; i < arr.length-1; ++i){
+//         let elem1 = arr[i]
+//         let elem2 = arr[i+1]
+//         temp.push(elem1, elem2)
+//         console.log(temp);
+//         if(elem1 < elem2){
+//             temp.shift(elem1)
+//         }
+//     }
+//     return temp
+// }  
+
 
