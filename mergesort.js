@@ -17,7 +17,6 @@ function merge(arr1, arr2) {
 //[2, 4, 5, 7, 1] === [[2], [4], [5], [7], [1]]
 function mergeSort(arr) {
   let result = [];
-  let other;
   ///base case
   if (arr.length === 1 || arr.length === 0) {
     return arr;
@@ -27,15 +26,10 @@ function mergeSort(arr) {
     let e = arr[i];
 
     if (Array.isArray(e)) {
-      if (e.length > 1) {
-        other = mergeSort(e);
-        console.log(other);
-      } else {
-        result.push(e);
-      }
+      result = merge(result, e);
     } else {
-      result.push([e]);
+      result.push(e);
     }
+    console.log(result);
   }
-  return result.concat(other);
 }
